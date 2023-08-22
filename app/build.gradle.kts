@@ -1,21 +1,20 @@
+@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("my-plugin")
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.catheryan.demo)
 }
-//apply<My_plugin_gradle.DemoPlugin>()
+
 android {
-    namespace = "com.catheryan.app"
+    namespace = "com.catheryan.demo"
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.catheryan.app"
+        applicationId = "com.catheryan.demo"
         minSdk = 24
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
-
-        testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -37,9 +36,8 @@ android {
 }
 
 dependencies {
-
-    implementation("com.android.support:appcompat-v7:28.0.0")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("com.android.support.test:runner:1.0.2")
-    androidTestImplementation("com.android.support.test.espresso:espresso-core:3.0.2")
+    implementation(libs.android.supportV7)
+    implementation(libs.android.constraintLayout)
+    implementation(libs.android.liveData)
+    implementation(libs.android.viewModel)
 }

@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.plugin.getKotlinPluginVersion
-
 plugins {
     // Apply the Java Gradle plugin development plugin to add support for developing Gradle plugins
     `java-gradle-plugin`
@@ -7,16 +5,12 @@ plugins {
     id("com.gradle.plugin-publish") version "1.1.0"
 }
 
-repositories {
-    // Use Maven Central for resolving dependencies.
-    mavenCentral()
-}
-
 dependencies {
     /* Depend on the default Gradle API's since we want to build a custom plugin */
     implementation(gradleApi())
     implementation(localGroovy())
-    compileOnly(libs.android.gradlePlugin)
+    implementation(gradleKotlinDsl())
+    implementation(libs.android.gradlePlugin)
     compileOnly(libs.kotlin.gradlePlugin)
 }
 
@@ -27,6 +21,11 @@ gradlePlugin {
             id = "com.catheryan.mall.demo"
             implementationClass = "com.catheryan.mall.DemoPlugin"
             displayName = "catheryan gradle plugin demo"
+        }
+        create("demo-plugin2"){
+            id = "com.catheryan.mall.demo2"
+            implementationClass = "com.catheryan.mall.DemoPlugin2"
+            displayName = "catheryan gradle plugin demo2"
         }
     }
 }

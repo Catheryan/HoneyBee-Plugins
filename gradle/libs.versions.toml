@@ -1,13 +1,23 @@
 [versions]
 
-androidGradlePlugin = "7.4.2"
+androidGradlePlugin = "7.4.1"
 kotlin = "1.8.21"
+demoVersion = "0.0.1"
+bmuschkoPlugin = "6.4.0"
+supportV7Version = "28.0.0"
+constraintLayoutVersion = "2.0.4"
+liveDataVersion = "1.1.1"
 
 [libraries]
-
 # Core dependencies
 android-gradlePlugin = { module = "com.android.tools.build:gradle", version.ref = "androidGradlePlugin" }
 kotlin-gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+#demo-catheryanPlugin = { module = "com.catheryan.demo:firstdemo", version.ref = "demoVersion" }
+bmuschkoPlugin = { module = "com.bmuschko:gradle-docker-plugin", version.ref = "bmuschkoPlugin" }
+android-supportV7 = { module = "com.android.support:appcompat-v7", version.ref = "supportV7Version" }
+android-constraintLayout = { module = "com.android.support.constraint:constraint-layout", version.ref = "constraintLayoutVersion" }
+android-liveData = { module = "android.arch.lifecycle:livedata", version.ref = "liveDataVersion" }
+android-viewModel = { module = "android.arch.lifecycle:viewmodel", version.ref = "liveDataVersion" }
 
 [plugins]
 
@@ -15,3 +25,5 @@ android-application = { id = "com.android.application", version.ref = "androidGr
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+## 直接走的includeBuild方式，引用插件的方式
+catheryan-demo = { id = "com.catheryan.mall.demo2", version.ref = "demoVersion" }
