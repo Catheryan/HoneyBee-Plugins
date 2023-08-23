@@ -18,14 +18,19 @@ dependencies {
 gradlePlugin {
     plugins {
         create("demo-plugin"){
-            id = "com.catheryan.mall.demo"
-            implementationClass = "com.catheryan.mall.DemoPlugin"
+            id = "com.catheryan.demo"
+            implementationClass = "com.catheryan.DemoPlugin"
             displayName = "catheryan gradle plugin demo"
         }
         create("demo-plugin2"){
-            id = "com.catheryan.mall.demo2"
-            implementationClass = "com.catheryan.mall.DemoPlugin2"
+            id = "com.catheryan.demo2"
+            implementationClass = "com.catheryan.DemoPlugin2"
             displayName = "catheryan gradle plugin demo2"
+        }
+        create("analysisCodePlugin"){
+            id = "com.catheryan.analysis.code"
+            implementationClass = "com.catheryan.analysis.AnalysisPlugin"
+            displayName = "catheryan gradle plugin analysis code for asm"
         }
     }
 }

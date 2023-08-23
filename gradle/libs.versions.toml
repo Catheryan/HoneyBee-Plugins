@@ -26,4 +26,5 @@ android-library = { id = "com.android.library", version.ref = "androidGradlePlug
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 ## 直接走的includeBuild方式，引用插件的方式
-catheryan-demo = { id = "com.catheryan.mall.demo2", version.ref = "demoVersion" }
+catheryan-demo2 = { id = "com.catheryan.demo2", version.ref = "demoVersion" }
+catheryan-analysisCode = { id = "com.catheryan.analysis.code", version.ref = "demoVersion" }
