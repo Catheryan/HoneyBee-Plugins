@@ -7,7 +7,8 @@ plugins {
 }
 
 analysisConfig{
-
+    enableLog = true
+    packages = arrayOf("java.io.PrintStream")
 }
 
 android {

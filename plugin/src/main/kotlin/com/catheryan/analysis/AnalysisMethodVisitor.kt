@@ -17,6 +17,6 @@ class AnalysisMethodVisitor(
         isInterface: Boolean
     ) {
         super.visitMethodInsn(opcode, owner, name, descriptor, isInterface)
-        MethodAnalysisUtils.filterAndAddMethod(buildType, className, owner!!, name!!, descriptor!!)
+        MethodAnalysisUtils.filterAndAddMethod(buildType, currentClass = className, currentMethod = descriptor!!, invokeClassName = owner!!,invokeMethod = name!!)
     }
 }

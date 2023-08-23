@@ -8,7 +8,7 @@ object MethodAnalysisUtils {
     fun initConfig(ruleExtension: RuleExtension){
         reset()
         enableLog = ruleExtension.enableLog
-        ruleExtension.packages?.forEach {
+        ruleExtension.packages.takeIf { it.isNotEmpty() }?.forEach {
             val packageClassName = it.replace('.', '/')
             packages.add(packageClassName)
         }
@@ -39,8 +39,8 @@ object MethodAnalysisUtils {
         println("--> result: ")
         results[type]?.forEach {
             println(
-                "currentClass:[${it.currentClass}],method:[${it.currentMethod}],"
-                        + "  invokeClass:[${it.invokeClassName}],method:[${it.invokeMethod}]"
+                "callClass:[${it.currentClass}],callMethod:[${it.currentMethod}],"
+                        + "  invokeClass:[${it.invokeClassName}],invokeMethod:[${it.invokeMethod}]"
             )
         }
     }

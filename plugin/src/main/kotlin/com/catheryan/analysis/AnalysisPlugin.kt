@@ -12,7 +12,7 @@ class AnalysisPlugin : Plugin<Project> {
 
     override fun apply(project: Project) {
         if (!project.plugins.hasPlugin(AppPlugin::class.java)) return
-        val rule = project.extensions.create(ANALYSIS_NAME,RuleExtension::class.java)
+        project.extensions.create<RuleExtension>(ANALYSIS_NAME)
         //注册任务名称，感觉没啥吊用
         project.task(ANALYSIS_TASK_NAME)
 
@@ -43,12 +43,11 @@ class AnalysisPlugin : Plugin<Project> {
             MethodAnalysisUtils.initConfig(extension)
             //打印变体信息
             variants.forEach { variant ->
+                //transformDebugClassesWithAsm
                 val asmTaskName = "transform${variant.capitalized()}ClassesWithAsm"
-                tasks.getByName(asmTaskName){
+                tasks.getByName(asmTaskName).doLast {
                     //任务执行之后，生命周期打印映射到的方法以及名称
-                    doLast {
-                        MethodAnalysisUtils.end(variant)
-                    }
+                    MethodAnalysisUtils.end(variant)
                 }
             }
         }
