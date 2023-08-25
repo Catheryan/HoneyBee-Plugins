@@ -45,7 +45,7 @@ class AnalysisPlugin : Plugin<Project> {
             variants.forEach { variant ->
                 //transformDebugClassesWithAsm
                 val asmTaskName = "transform${variant.capitalized()}ClassesWithAsm"
-                tasks.getByName(asmTaskName).doLast {
+                it.tasks.getByName(asmTaskName).doLast {
                     //任务执行之后，生命周期打印映射到的方法以及名称
                     MethodAnalysisUtils.end(variant)
                 }

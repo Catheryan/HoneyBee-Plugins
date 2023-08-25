@@ -28,3 +28,5 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 ## 直接走的includeBuild方式，引用插件的方式
 catheryan-demo2 = { id = "com.catheryan.demo2", version.ref = "demoVersion" }
 catheryan-analysisCode = { id = "com.catheryan.analysis.code", version.ref = "demoVersion" }
+kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+maven-publish = { id = "com.gradle.plugin-publish", version.ref = "kotlin" }

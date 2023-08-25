@@ -1,8 +1,16 @@
 plugins {
     // Apply the Java Gradle plugin development plugin to add support for developing Gradle plugins
     `java-gradle-plugin`
-    `kotlin-dsl`
-    id("com.gradle.plugin-publish") version "1.1.0"
+    alias(libs.plugins.kotlin.jvm)
+    `maven-publish`
+    `java-library`
+//    id("version-catalog")
+}
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
 }
 
 dependencies {
@@ -10,7 +18,7 @@ dependencies {
     implementation(gradleApi())
     implementation(localGroovy())
     implementation(gradleKotlinDsl())
-    implementation(libs.android.gradlePlugin)
+    compileOnly(libs.android.gradlePlugin)
     compileOnly(libs.kotlin.gradlePlugin)
 }
 
@@ -32,6 +40,14 @@ gradlePlugin {
             implementationClass = "com.catheryan.analysis.AnalysisPlugin"
             displayName = "catheryan gradle plugin analysis code for asm"
         }
+        register("platform") {
+            id = "com.catheryan.platform"
+            implementationClass = "com.catheryan.sample.PlatformPlugin"
+        }
+        register("sample") {
+            id = "com.catheryan.platform.sample"
+            implementationClass = "com.catheryan.sample.SamplePlugin"
+        }
     }
 }
 //com.gradle.plugin-publish => maven配置
@@ -40,7 +56,7 @@ publishing {
         repositories {
             maven {
                 name = "CatherRepoMavenLocal"
-                url = uri("${rootDir}/repo")
+                url = uri("${rootDir.parent}/repo")
             }
         }
         create<MavenPublication>("CatherRepo"){
@@ -52,6 +68,14 @@ publishing {
             description = properties["DESCRIPTION"].toString()
         }
         create<MavenPublication>("CatherRepo2"){
+            version = properties["VERSION"].toString()
+            artifactId = properties["ARTIFACTID"].toString()
+            groupId = properties["GROUPID"].toString()
+            description = properties["DESCRIPTION"].toString()
+        }
+        create<MavenPublication>("CatherVersionCatalogs"){
+            // 配置产物的 JAR 路径
+            from(components["java"])
             version = properties["VERSION"].toString()
             artifactId = properties["ARTIFACTID"].toString()
             groupId = properties["GROUPID"].toString()

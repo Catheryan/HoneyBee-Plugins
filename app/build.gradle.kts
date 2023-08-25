@@ -2,8 +2,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.catheryan.demo2)
-    alias(libs.plugins.catheryan.analysisCode)
+    id("com.catheryan.analysis.code")
 }
 
 analysisConfig{
@@ -46,4 +45,9 @@ dependencies {
     implementation(libs.android.constraintLayout)
     implementation(libs.android.liveData)
     implementation(libs.android.viewModel)
+    // include all available samples.
+    val samples: List<String> by project.extra
+    samples.forEach {
+        implementation(project(it))
+    }
 }
