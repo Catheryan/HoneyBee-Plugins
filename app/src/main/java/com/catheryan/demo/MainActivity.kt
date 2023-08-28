@@ -3,7 +3,6 @@ package com.catheryan.demo
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.catheryan.demo.ui.main.MainFragment
-
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

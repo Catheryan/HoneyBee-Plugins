@@ -1,10 +1,10 @@
+@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     // Apply the Java Gradle plugin development plugin to add support for developing Gradle plugins
     `java-gradle-plugin`
     alias(libs.plugins.kotlin.jvm)
     `maven-publish`
     `java-library`
-//    id("version-catalog")
 }
 
 java {

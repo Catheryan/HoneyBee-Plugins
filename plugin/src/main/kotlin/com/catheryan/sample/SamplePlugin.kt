@@ -1,6 +1,7 @@
 package com.catheryan.sample
 
 import com.android.build.api.dsl.LibraryExtension
+import com.android.build.gradle.internal.scope.ProjectInfo.Companion.getBaseName
 import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -25,9 +26,9 @@ class SamplePlugin : Plugin<Project> {
                 apply("com.android.library")
                 apply("org.jetbrains.kotlin.android")
                 apply("org.jetbrains.kotlin.kapt")
-//                apply("com.google.devtools.ksp")
+                apply("com.google.devtools.ksp")
 //                apply("dagger.hilt.android.plugin")
-//                apply<CommonConventionPlugin>()
+                apply<CommonConventionPlugin>()
             }
 
             pluginManager.withPlugin("java") {
@@ -61,7 +62,7 @@ class SamplePlugin : Plugin<Project> {
                     }
 
                     buildFeatures {
-                        compose = true
+                        compose = false
                     }
 
 //                    composeOptions {
@@ -70,13 +71,14 @@ class SamplePlugin : Plugin<Project> {
 //                    }
                 }
             }
-
+            println("Library aliases: ${libs.libraryAliases}")
             dependencies {
                 // Do not add the shared module to itself
 //                if (!project.displayName.contains("samples:base")) {
 //                    "implementation"(project(":samples:base"))
 //                }
-                "implementation(${pl})"
+
+                "implementation"(libs.findLibrary("android.supportV7").get())
 //                "implementation"(platform(libs.findLibrary("compose.bom").get()))
 //                "androidTestImplementation"(platform(libs.findLibrary("compose.bom").get()))
 

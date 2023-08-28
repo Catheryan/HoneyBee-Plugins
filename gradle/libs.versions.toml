@@ -7,6 +7,8 @@ bmuschkoPlugin = "6.4.0"
 supportV7Version = "28.0.0"
 constraintLayoutVersion = "2.0.4"
 liveDataVersion = "1.1.1"
+autoServiceVersion = "1.1.0"
+ksp = "1.8.21-1.0.11"
 
 [libraries]
 # Core dependencies
@@ -18,6 +20,8 @@ android-supportV7 = { module = "com.android.support:appcompat-v7", version.ref =
 android-constraintLayout = { module = "com.android.support.constraint:constraint-layout", version.ref = "constraintLayoutVersion" }
 android-liveData = { module = "android.arch.lifecycle:livedata", version.ref = "liveDataVersion" }
 android-viewModel = { module = "android.arch.lifecycle:viewmodel", version.ref = "liveDataVersion" }
+apt-autoService = { module = "com.google.auto.service:auto-service", version.ref = "autoServiceVersion" }
+google-ksp-api = { module = "com.google.devtools.ksp:symbol-processing-api", version.ref = "ksp" }
 
 [plugins]
 
@@ -30,3 +34,4 @@ catheryan-demo2 = { id = "com.catheryan.demo2", version.ref = "demoVersion" }
 catheryan-analysisCode = { id = "com.catheryan.analysis.code", version.ref = "demoVersion" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 maven-publish = { id = "com.gradle.plugin-publish", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }

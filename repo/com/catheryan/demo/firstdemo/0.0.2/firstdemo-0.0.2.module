@@ -1,0 +1,82 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.catheryan.demo",
+    "module": "firstdemo",
+    "version": "0.0.2",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "8.0.2"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.8.21"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "firstdemo-0.0.2.jar",
+          "url": "firstdemo-0.0.2.jar",
+          "size": 36982,
+          "sha512": "930261f7b9e2207939aa630620893cd15a27d38c42a6371e39e44b15dc85e9ec7ef63cfe7cdd559faa7624a4bb86eb0e675988932da2f3d9bb375d48052df8ae",
+          "sha256": "3fff952f2152ae33e4ddf3e6449ecac14d95960d65e6e8e64d6a620b64bf1606",
+          "sha1": "145b53df55590ecae00cfca2aa697edea6272fff",
+          "md5": "232bc2f9a566d77a5dd5dd1279ce7689"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.8.21"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "firstdemo-0.0.2.jar",
+          "url": "firstdemo-0.0.2.jar",
+          "size": 36982,
+          "sha512": "930261f7b9e2207939aa630620893cd15a27d38c42a6371e39e44b15dc85e9ec7ef63cfe7cdd559faa7624a4bb86eb0e675988932da2f3d9bb375d48052df8ae",
+          "sha256": "3fff952f2152ae33e4ddf3e6449ecac14d95960d65e6e8e64d6a620b64bf1606",
+          "sha1": "145b53df55590ecae00cfca2aa697edea6272fff",
+          "md5": "232bc2f9a566d77a5dd5dd1279ce7689"
+        }
+      ]
+    }
+  ]
+}

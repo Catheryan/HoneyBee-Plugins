@@ -4,7 +4,6 @@ import org.gradle.api.Project
 import org.gradle.api.Plugin
 
 class DemoPlugin: Plugin<Project> {
-
     override fun apply(target: Project) {
         with(target) {
             tasks.register("greeting") {

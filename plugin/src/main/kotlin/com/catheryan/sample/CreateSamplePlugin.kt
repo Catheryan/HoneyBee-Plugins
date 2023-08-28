@@ -110,7 +110,7 @@ private fun sampleBuildTemplate(samplePackage: String) = """
 $projectLicense
 
 plugins {
-    //id("com.example.platform.sample")
+    id("com.catheryan.platform.sample")
 }
 
 android {
@@ -134,15 +134,7 @@ $projectLicense
 
 package $samplePackage
 
-import android.support.v7.app.AppCompatActivity
-import android.os.Bundle
+class $moduleName {
 
-class MainActivity : AppCompatActivity() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        
-        println("woshishi")
-    }
 }
 """.trimIndent()
