@@ -22,8 +22,10 @@ plugins {
 
 android {
     namespace = "com.catheryan.platform.router.router_core"
+    viewBinding.isEnabled = true
 }
 
 dependencies {
     // Add samples specific dependencies
+    implementation(project(":samples:router:router_apt"))
 }

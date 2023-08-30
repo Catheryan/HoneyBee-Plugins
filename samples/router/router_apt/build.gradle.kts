@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-
+@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     `java-library`
     alias(libs.plugins.kotlin.jvm)
@@ -33,6 +33,6 @@ dependencies {
     // Add samples specific dependencies
     implementation(libs.apt.autoService)
     kapt(libs.apt.autoService)
-
     implementation(project(":samples:router:router_annotation"))
+    implementation(libs.google.gson)
 }

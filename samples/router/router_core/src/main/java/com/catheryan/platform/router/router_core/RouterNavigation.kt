@@ -18,6 +18,23 @@
 
 package com.catheryan.platform.router.router_core
 
-class RouterNavigation {
+import android.content.ComponentName
+import android.content.Context
+import android.content.Intent
+import com.catheryan.platform.router.router_apt.data.RouterData
 
+object RouterNavigation {
+    private val routerMap = mutableMapOf<String, RouterData>()
+
+    fun init() {
+        //在这里我们会对路由表进行注册
+    }
+
+    fun navigation(context: Context, url: String) {
+        val routerData = routerMap[url] ?: return
+        val intent = Intent().apply {
+            component = ComponentName(context, routerData.cla)
+        }
+        context.startActivity(intent)
+    }
 }

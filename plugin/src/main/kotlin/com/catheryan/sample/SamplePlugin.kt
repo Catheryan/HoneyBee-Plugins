@@ -78,7 +78,7 @@ class SamplePlugin : Plugin<Project> {
 //                    "implementation"(project(":samples:base"))
 //                }
 
-                "implementation"(libs.findLibrary("android.supportV7").get())
+//                "implementation"(libs.findLibrary("android.supportV7").get())
 //                "implementation"(platform(libs.findLibrary("compose.bom").get()))
 //                "androidTestImplementation"(platform(libs.findLibrary("compose.bom").get()))
 

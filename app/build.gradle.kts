@@ -2,12 +2,21 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    id("com.catheryan.analysis.code")
+    alias(libs.plugins.kotlin.kapt)
+//    id("com.catheryan.analysis.code")
 }
+//
+//analysisConfig{
+//    enableLog = true
+//    packages = arrayOf("java.io.PrintStream")
+//}
 
-analysisConfig{
-    enableLog = true
-    packages = arrayOf("java.io.PrintStream")
+java {
+    extensions.configure<JavaPluginExtension> {
+        toolchain {
+            languageVersion.set(JavaLanguageVersion.of(17))
+        }
+    }
 }
 
 android {
@@ -31,23 +40,33 @@ android {
             )
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+
+    viewBinding {
+        enable = true
     }
-    kotlinOptions {
-        jvmTarget = "1.8"
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+    kapt {
+        useBuildCache = true
+        arguments {
+
+        }
     }
 }
 
 dependencies {
-    implementation(libs.android.supportV7)
-    implementation(libs.android.constraintLayout)
     implementation(libs.android.liveData)
+    implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.fragment)
     implementation(libs.android.viewModel)
     // include all available samples.
     val samples: List<String> by project.extra
     samples.forEach {
         implementation(project(it))
     }
+    kapt(project(":samples:router:router_apt"))
 }
