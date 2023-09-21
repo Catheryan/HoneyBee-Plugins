@@ -3,6 +3,7 @@ package com.catheryan.router
 import com.android.build.api.artifact.ScopedArtifact
 import com.android.build.api.variant.AndroidComponentsExtension
 import com.android.build.api.variant.ScopedArtifacts
+import com.android.build.gradle.AppPlugin
 import com.catheryan.router.ext.RouterDocExt.ROUTER_DOC_DIR
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -15,8 +16,8 @@ import java.io.File
  * @description
  */
 class RouterPlugin : Plugin<Project> {
-
     override fun apply(target: Project) {
+        if (!target.plugins.hasPlugin(AppPlugin::class.java)) return
         with(target){
             extensions.create(ROUTER_EXTENSION,RouterExtension::class.java)
             extensions.getByType(AndroidComponentsExtension::class.java).apply {

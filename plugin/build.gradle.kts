@@ -48,6 +48,10 @@ gradlePlugin {
             id = "com.catheryan.platform.sample"
             implementationClass = "com.catheryan.sample.SamplePlugin"
         }
+        register("router") {
+            id = "com.catheryan.platform.router"
+            implementationClass = "com.catheryan.router.RouterPlugin"
+        }
     }
 }
 //com.gradle.plugin-publish => maven配置

@@ -28,4 +28,5 @@ android {
 dependencies {
     // Add samples specific dependencies
     implementation(project(":samples:router:router_apt"))
+    implementation(project(":samples:router:router_annotation"))
 }

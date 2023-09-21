@@ -12,7 +12,7 @@ import org.objectweb.asm.MethodVisitor
  * @description
  */
 object RouterInject {
-    private const val NAVIGATION = "com.catheryan.platform.router.router_core.RouterNavigation"
+    private const val NAVIGATION = "com/catheryan/platform/router/router_core/RouterNavigation"
     private const val NAVIGATION_INJECT_METHOD = "init"
     private const val NAVIGATION_FIELD_NAME = "routerMap"
 
@@ -34,7 +34,7 @@ object RouterInject {
             exceptions: Array<out String>?
         ): MethodVisitor {
             val mv = super.visitMethod(access, name, descriptor, signature, exceptions)
-            if (name == NAVIGATION_INJECT_METHOD.replace(".", File.separator)) {
+            if (name == NAVIGATION_INJECT_METHOD) {
                 return RouterMethodVisitor(mv, clas)
             }
             return mv
@@ -42,9 +42,40 @@ object RouterInject {
 
     }
 
-    class RouterMethodVisitor(mv: MethodVisitor?, clas: MutableList<String>) : MethodVisitor(Opcodes.ASM9,mv) {
+    class RouterMethodVisitor(mv: MethodVisitor?, private val clas: MutableList<String>) : MethodVisitor(Opcodes.ASM9,mv) {
         override fun visitInsn(opcode: Int) {
+            if (opcode >= Opcodes.IRETURN && opcode <= Opcodes.RETURN) {
+                clas.map {
+                    it.replace(".class", "")
+                }.forEach { className ->
+                    mv.visitTypeInsn(Opcodes.NEW, className)
+                    mv.visitInsn(Opcodes.DUP)
+                    mv.visitMethodInsn(
+                        Opcodes.INVOKESPECIAL,
+                        className,
+                        "<init>",
+                        "()V",
+                        false
+                    )
+                    mv.visitFieldInsn(
+                        Opcodes.GETSTATIC,
+                        NAVIGATION,
+                        NAVIGATION_FIELD_NAME,
+                        "Ljava/util/Map;"
+                    )
+                    mv.visitMethodInsn(
+                        Opcodes.INVOKEVIRTUAL,
+                        className,
+                        "init",
+                        "(Ljava/util/Map;)V",
+                        false
+                    )
+                }
+            }
             super.visitInsn(opcode)
+        }
+        override fun visitMaxs(maxStack: Int, maxLocals: Int) {
+            super.visitMaxs(maxStack + clas.size, maxLocals)
         }
     }
 
